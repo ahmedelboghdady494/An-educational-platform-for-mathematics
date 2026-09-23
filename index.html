@@ -1160,6 +1160,43 @@ input,select,textarea{background:#f6fdff!important;color:var(--text)!important;b
 @media(max-width:700px){.unit-grid{grid-template-columns:1fr!important}.quiz-grid{grid-template-columns:1fr!important}.lesson-item{min-height:64px!important}.question-text{font-size:18px!important}}
 </style>
 </style>
+
+<style>
+/* FINAL LAYOUT: no left sidebar; everything stays inside the page */
+.sidebar{display:none!important}
+.app{display:block!important}
+.main{width:100%!important;max-width:1280px!important;margin:0 auto!important;padding:28px 24px 60px!important}
+.topbar{position:sticky!important;top:0!important;z-index:1000!important}
+.feature-grid,.term-grid,.unit-grid,.quiz-grid,.achievement-grid{align-items:stretch!important}
+.term-card,.feature-card,.unit-card,.quiz-card,.stat,.lesson-box{border-radius:24px!important}
+.term-card,.feature-card{min-height:220px!important;padding:28px!important}
+.term-card button,.feature-card button,.unit-card button,.quiz-card button,.primary,.secondary{border-radius:16px!important;min-height:52px!important;font-weight:800!important}
+.term-card .primary,.feature-card .primary{min-width:180px!important}
+.unit-card{padding:0!important;overflow:hidden!important}
+.unit-top{padding:28px!important;cursor:pointer!important;display:flex!important;align-items:center!important;gap:18px!important;background:linear-gradient(135deg,#effcff,#d9f4fa)!important;border-bottom:1px solid #b9dfe8!important}
+.unit-top:hover{background:linear-gradient(135deg,#e4f9fc,#cceef5)!important}
+.unit-info h3{font-size:24px!important}
+.unit-info p{font-size:15px!important}
+.unit-open{margin-inline-start:auto!important;min-width:160px!important}
+.unit-lessons{padding:20px!important;display:grid!important;gap:14px!important}
+.unit-lessons.hidden{display:none!important}
+.lesson-item{min-height:88px!important;border-radius:18px!important;font-size:19px!important;padding:18px 22px!important;display:flex!important;align-items:center!important;justify-content:space-between!important}
+.lesson-item strong{font-size:21px!important}
+.quiz-card{min-height:210px!important;padding:24px!important}
+.quiz-number{width:68px!important;height:68px!important;border-radius:18px!important;font-size:27px!important}
+.question-card{border-radius:24px!important;padding:28px!important}
+.question-number{font-size:18px!important}
+.question-text{font-size:21px!important;line-height:1.9!important}
+.question-text img,.answer img{max-width:300px!important;min-width:40px!important;height:auto!important}
+.answer{min-height:64px!important;font-size:18px!important;text-align:left!important}
+.profile-edit-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.teacher-table-wrap{overflow-x:auto;border-radius:20px;border:1px solid #b9dfe8;background:#f2fbfe}
+.teacher-table{width:100%;border-collapse:collapse;min-width:850px}
+.teacher-table th,.teacher-table td{padding:13px 12px;border-bottom:1px solid #cfe5eb;text-align:left;vertical-align:top}
+.teacher-table th{background:#dff3f8;color:#14576b}
+.demo-counter{font-size:14px;font-weight:800;padding:10px 15px;border-radius:14px;background:#e1f5f9;border:1px solid #a9d7e2;color:#14647a;display:inline-block;margin-bottom:14px}
+@media(max-width:800px){.main{padding:18px 14px 40px!important}.profile-edit-grid{grid-template-columns:1fr!important}.unit-top{align-items:flex-start}.unit-open{min-width:120px!important}.lesson-item{font-size:17px!important}.question-text{font-size:19px!important}}
+</style>
 </head>
 
 <body class="auth-locked">
@@ -1223,65 +1260,6 @@ input,select,textarea{background:#f6fdff!important;color:var(--text)!important;b
 </header>
 
 <div class="app">
-
-<!-- =========================
-     SIDEBAR
-========================= -->
-
-<aside class="sidebar" id="sidebar">
-
-    <div class="side-title">Academy</div>
-
-    <button class="side-btn active" id="nav-home" onclick="showPage('home')">
-        <span class="ico">🏠</span> Home
-    </button>
-
-    <button class="side-btn" id="nav-terms" onclick="showPage('terms')">
-        <span class="ico">📚</span> Terms
-    </button>
-
-    <div class="side-title">Term 1</div>
-
-    <button class="side-btn" onclick="showPage('lessons')">
-        <span class="ico">📖</span> Lessons
-    </button>
-
-    <button class="side-btn" onclick="showPage('quizzes')">
-        <span class="ico">📝</span> Quizzes
-    </button>
-
-    <button class="side-btn" onclick="showPage('challenges')">
-        <span class="ico">🧠</span> Challenges
-    </button>
-
-    <button class="side-btn" onclick="showPage('progress')">
-        <span class="ico">📊</span> Progress
-    </button>
-
-    <button class="side-btn" onclick="showPage('mathworld')">
-        <span class="ico">🏙️</span> Math World
-    </button>
-
-    <button class="side-btn" onclick="showPage('worksheets')">
-        <span class="ico">📄</span> Worksheets
-    </button>
-
-    <div class="side-title">More</div>
-
-    <button class="side-btn" onclick="showPage('rewards')">
-        <span class="ico">🏆</span> Achievements
-    </button>
-
-    <button class="side-btn" onclick="showPage('profile')">
-        <span class="ico">👤</span> Profile
-    </button>
-
-    <button class="side-btn" onclick="openTeacherLogin()">
-        <span class="ico">👨‍🏫</span> Teacher Login
-    </button>
-
-</aside>
-
 
 <!-- =========================
      MAIN
@@ -1521,7 +1499,7 @@ function renderHome(){
         <section class="hero">
 
             <div class="hero-content">
-                <div class="live-counter">👥 Visitors counter: <span id="visitorCounter">0</span></div>
+                <div class="live-counter">👥 Demo visitors: <span id="visitorCounter">0</span></div>
 
                 <div class="badge">
                     🇦🇪 UAE Curriculum • Grade 9 Advanced
@@ -1788,60 +1766,29 @@ function renderTerms(){
 ========================================================= */
 
 function unitHTML(unitName, mode){
-
     const unit = modules[unitName];
-
-    let lessons = "";
-
+    const uid = ('unit_'+mode+'_'+unitName).replace(/[^a-zA-Z0-9_-]/g,'_');
+    let lessons = '';
     unit.lessons.forEach(lesson=>{
-
-        lessons += `
-
-            <button class="lesson-item"
-                onclick="openLesson('${unitName}','${lesson[0]}','${lesson[1]}','${mode}')">
-
-                <span>
-                    <strong>${lesson[0]}</strong>
-                    &nbsp; ${lesson[1]}
-                </span>
-
-                <span class="arrow">→</span>
-
-            </button>
-        `;
-
+        lessons += `<button class="lesson-item" onclick="openLesson('${unitName}','${lesson[0]}','${lesson[1]}','${mode}')">
+            <span><strong>${lesson[0]}</strong>&nbsp; ${lesson[1]}</span><span class="arrow">→</span>
+        </button>`;
     });
-
-
-    return `
-
-        <div class="unit-card">
-
-            <div class="unit-top">
-
-                <div class="unit-icon">
-                    ${unit.icon}
-                </div>
-
-                <div class="unit-info">
-
-                    <h3>${unitName} — ${unit.title}</h3>
-
-                    <p>
-                        ${unit.lessons.length}
-                        lessons available
-                    </p>
-
-                </div>
-
-            </div>
-
-            <div class="lesson-list">
-                ${lessons}
-            </div>
-
+    return `<div class="unit-card">
+        <div class="unit-top" onclick="toggleUnit('${uid}')">
+            <div class="unit-icon">${unit.icon}</div>
+            <div class="unit-info"><h3>${unitName} — ${unit.title}</h3><p>${unit.lessons.length} lessons available</p></div>
+            <button class="secondary unit-open" onclick="event.stopPropagation();toggleUnit('${uid}')">View Lessons ▾</button>
         </div>
-    `;
+        <div id="${uid}" class="unit-lessons hidden">${lessons}</div>
+    </div>`;
+}
+function toggleUnit(id){
+    const el=document.getElementById(id); if(!el)return;
+    el.classList.toggle('hidden');
+    const card=el.parentElement;
+    const btn=card?.querySelector('.unit-open');
+    if(btn) btn.textContent=el.classList.contains('hidden')?'View Lessons ▾':'Hide Lessons ▴';
 }
 
 
@@ -2304,23 +2251,31 @@ function finishQuiz(unit,id,title,number){
     const questions=getQuestions(unit,id,number);
     const percent=Math.round((quizScore/questions.length)*100);
     const key=`quiz_${unit}_${id}_${number}`;
-    const result={score:quizScore,total:questions.length,percent,date:new Date().toLocaleString()};
+    const result={score:quizScore,total:questions.length,percent,date:new Date().toLocaleString(),answers:quizAnswers};
     localStorage.setItem(key,JSON.stringify(result));
     logStudentActivity("Completed quiz",`${id} • Quiz ${number} • ${percent}%`);
-    document.getElementById('main').innerHTML=`
-      <div class="quiz-shell"><div class="question-card" style="text-align:center">
-        <div style="font-size:65px">${percent>=80?'🏆':percent>=50?'⭐':'💪'}</div>
-        <h2 style="margin-top:10px">Quiz Complete!</h2>
-        <p style="color:#5f7f8d;margin-top:8px">${unit} → ${id} → Quiz ${number}</p>
-        <div style="font-size:45px;font-weight:bold;margin:25px 0 8px">${percent}%</div>
-        <p style="color:#5f7f8d">Correct: <strong>${quizScore}</strong> / ${questions.length}</p>
-        <p style="font-size:12px;color:#6b8794;margin-top:10px">This quiz uses questions from the uploaded Term 1 worksheet and changes by quiz number.</p>
-        <div style="margin-top:24px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px">
-          <button class="primary" onclick="openLessonQuizzes('${unit}','${id}','${title}')">Back to Quizzes</button>
-          <button class="secondary" onclick="startQuiz('${unit}','${id}','${title}',${number})">Try Again</button>
-          <button class="secondary" onclick="showPage('progress')">View Progress</button>
-        </div>
-      </div></div>`;
+    document.getElementById('main').innerHTML=`<div class="quiz-shell"><div class="question-card" style="text-align:center">
+      <div style="font-size:65px">${percent>=80?'🏆':percent>=50?'⭐':'💪'}</div><h2 style="margin-top:10px">Quiz Complete!</h2>
+      <p style="color:#5f7f8d;margin-top:8px">${unit} → ${id} → Quiz ${number}</p><div style="font-size:45px;font-weight:bold;margin:25px 0 8px">${percent}%</div>
+      <p style="color:#5f7f8d">Correct: <strong>${quizScore}</strong> / ${questions.length}</p>
+      <div style="margin-top:24px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px">
+        <button class="primary" onclick="reviewQuiz('${unit}','${id}','${title}',${number})">🔎 Review Answers</button>
+        <button class="secondary" onclick="openLessonQuizzes('${unit}','${id}','${title}')">Back to Quizzes</button>
+        <button class="secondary" onclick="showPage('progress')">View Progress</button>
+      </div></div></div>`;
+}
+function reviewQuiz(unit,id,title,number){
+ const questions=getQuestions(unit,id,number), key=`quiz_${unit}_${id}_${number}`;
+ const saved=JSON.parse(localStorage.getItem(key)||'{}'), userAnswers=saved.answers||[];
+ let html=`<div class="page-title"><div><button class="back" onclick="openLessonQuizzes('${unit}','${id}','${title}')">← Back to Quizzes</button><h2 style="margin-top:15px">🔎 Review Answers</h2><p>${unit} → ${id} → Quiz ${number}</p></div></div>`;
+ questions.forEach((q,i)=>{
+   const ua=userAnswers[i]; let correct=false, userText='No answer';
+   if(q.options.length===4){correct=(ua!==undefined && ua===q.c); userText=ua===undefined?'No answer':cleanQuizHtml(q.options[ua]||'');}
+   else {userText=ua||'No answer'; correct=gradeSourceWritten(q,ua||'');}
+   const correctText=q.options.length===4?cleanQuizHtml(q.options[q.c]||''):cleanQuizHtml(q.answerKey||'');
+   html+=`<div class="question-card" style="margin-bottom:16px;border-left:6px solid ${correct?'#25a66a':'#dc5b66'}"><div class="question-number">QUESTION ${i+1}</div><div class="question-text">${cleanQuizHtml(q.q)}</div><div class="answer" style="margin-top:12px;background:${correct?'#e7f8ef':'#fff0f1'}"><strong>${correct?'✅ Correct':'❌ Incorrect'}</strong><br><b>Your answer:</b> ${userText}<br><b>Correct answer:</b> ${correctText}</div></div>`;
+ });
+ document.getElementById('main').innerHTML=html;
 }
 
 
@@ -2879,26 +2834,34 @@ function renderProfile(){
     const p=JSON.parse(localStorage.getItem("aa_student_profile")||"{}");
     const avatar=getStoredAvatar();
     document.getElementById("main").innerHTML=`
-      <div class="page-title"><div><h2>👤 My Profile</h2><p>Your saved student information.</p></div></div>
-      <div class="profile-panel" style="max-width:760px;margin:auto;text-align:center">
+      <div class="page-title"><div><h2>👤 My Profile</h2><p>Edit your student information and profile photo after entering the platform.</p></div></div>
+      <div class="profile-panel" style="max-width:900px;margin:auto;text-align:center">
         <div class="profile-big">${avatar?`<img src="${avatar}" style="width:100%;height:100%;object-fit:cover" alt="Profile">`:escapeHTML((currentUser||"S").charAt(0).toUpperCase())}</div>
         <h2>${escapeHTML(currentUser||p.fullName||"Student")}</h2>
         <button class="primary" onclick="chooseProfilePhoto()">📷 Change Profile Photo</button>
-        <div class="profile-edit-grid">
-          ${profileField("Country / الدولة",p.country)}
-          ${profileField("Emirate / الإمارة",p.emirate)}
-          ${profileField("School / المدرسة",p.schoolName)}
-          ${profileField("Full Name / الاسم",p.fullName)}
-          ${profileField("Grade / الصف",p.grade)}
-          ${profileField("Track / المسار",p.track)}
-          ${profileField("Section / الشعبة",p.section||"—")}
+        <div class="profile-edit-grid" style="text-align:left">
+          <div class="profile-field"><b>Country / الدولة</b><select id="editCountry"><option>${escapeHTML(p.country||'United Arab Emirates • الإمارات العربية المتحدة')}</option></select></div>
+          <div class="profile-field"><b>Emirate / الإمارة</b><select id="editEmirate">${['Sharjah • الشارقة','Dubai • دبي','Abu Dhabi • أبوظبي','Ajman • عجمان','Umm Al Quwain • أم القيوين','Ras Al Khaimah • رأس الخيمة','Fujairah • الفجيرة'].map(x=>`<option ${x===p.emirate?'selected':''}>${x}</option>`).join('')}</select></div>
+          <div class="profile-field"><b>School / المدرسة</b><input id="editSchool" value="${escapeHTML(p.schoolName||'')}"></div>
+          <div class="profile-field"><b>Full Name / الاسم</b><input id="editFullName" value="${escapeHTML(p.fullName||currentUser||'')}"></div>
+          <div class="profile-field"><b>Grade / الصف</b><input id="editGrade" value="${escapeHTML(p.grade||'Grade 9 • التاسع')}"></div>
+          <div class="profile-field"><b>Track / المسار</b><input id="editTrack" value="${escapeHTML(p.track||'Advanced • متقدم')}"></div>
+          <div class="profile-field"><b>Section / الشعبة</b><input id="editSection" value="${escapeHTML(p.section||'')}"></div>
         </div>
-        <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-          <button class="secondary" onclick="editStudentProfile()">✏️ Edit My Information</button>
+        <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <button class="primary" onclick="saveEditedProfile()">💾 Save Changes</button>
           <button class="secondary" onclick="logout()">Logout</button>
         </div>
       </div>`;
 }
+function saveEditedProfile(){
+ const p=JSON.parse(localStorage.getItem('aa_student_profile')||'{}');
+ const full=document.getElementById('editFullName').value.trim(), school=document.getElementById('editSchool').value.trim();
+ if(!full||!school){toast('Please complete the name and school.');return;}
+ Object.assign(p,{country:document.getElementById('editCountry').value,emirate:document.getElementById('editEmirate').value,schoolName:school,fullName:full,grade:document.getElementById('editGrade').value.trim(),track:document.getElementById('editTrack').value.trim(),section:document.getElementById('editSection').value.trim()});
+ localStorage.setItem('aa_student_profile',JSON.stringify(p)); currentUser=full; saveUser(); logStudentActivity('Updated student profile','Name/school/grade/track/section'); renderProfile(); toast('Profile updated.');
+}
+
 function profileField(label,value){return `<div class="profile-field"><b>${escapeHTML(label)}</b><div style="margin-top:6px">${escapeHTML(value||"—")}</div></div>`}
 function escapeHTML(v){return String(v??"").replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]))}
 function getStoredAvatar(){return localStorage.getItem("aa_student_avatar")||""}
@@ -3063,108 +3026,25 @@ function teacherLogin(){
 ========================================================= */
 
 function renderTeacherDashboard(){
-
-    const isTeacher =
-        localStorage.getItem("aa_teacher") === "true";
-
-    if(!isTeacher){
-
-        openTeacherLogin();
-
-        return;
-
-    }
-
-
-    document.getElementById("main").innerHTML = `
-
-        <div class="page-title">
-
-            <div>
-
-                <h2>👨‍🏫 Teacher Dashboard</h2>
-
-                <p>
-                    Local dashboard for this browser.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="stats">
-
-            <div class="stat">
-                <div class="stat-label">
-                    Current Student
-                </div>
-
-                <div class="stat-value">
-                    ${currentUser}
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    Term
-                </div>
-
-                <div class="stat-value">
-                    1
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    Units
-                </div>
-
-                <div class="stat-value">
-                    4
-                </div>
-            </div>
-
-            <div class="stat">
-                <div class="stat-label">
-                    System
-                </div>
-
-                <div class="stat-value">
-                    ✓
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="lesson-box">
-
-            <h3>Teacher Tools</h3>
-
-            <p style="
-                color:#7f8ca3;
-                line-height:1.6;
-                margin:10px 0 20px;
-            ">
-                This static version stores data locally
-                in the current browser. A real online
-                teacher dashboard for all students would
-                require a database/backend.
-            </p>
-
-            <button class="primary"
-                onclick="showPage('progress')">
-                View Local Progress
-            </button>
-
-            <button class="secondary"
-                onclick="localStorage.removeItem('aa_teacher');showPage('home')">
-                Exit Teacher Mode
-            </button>
-
-        </div>
-    `;
+    if(localStorage.getItem("aa_teacher")!=="true"){openTeacherLogin();return;}
+    const profile=JSON.parse(localStorage.getItem('aa_student_profile')||'{}');
+    const activity=getStudentActivity();
+    const rows=activity.map(a=>`<tr><td>${escapeHTML(a.name)}</td><td>${escapeHTML(a.school)}</td><td>${escapeHTML(a.emirate)}</td><td>${escapeHTML(a.grade)}</td><td>${escapeHTML(a.track)}</td><td>${escapeHTML(a.section||'—')}</td><td>${escapeHTML(a.action)}</td><td>${escapeHTML(a.details||'')}</td><td>${escapeHTML(a.time)}</td></tr>`).join('');
+    document.getElementById('main').innerHTML=`
+      <div class="page-title"><div><h2>👨‍🏫 Teacher Dashboard</h2><p>Student profile, login/activity times, and saved activity results on this browser.</p></div></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">Demo Visitors</div><div class="stat-value">${Number(localStorage.getItem('aa_demo_counter')||0)}</div></div>
+        <div class="stat"><div class="stat-label">Current Student</div><div class="stat-value">${escapeHTML(profile.fullName||'—')}</div></div>
+        <div class="stat"><div class="stat-label">School</div><div class="stat-value">${escapeHTML(profile.schoolName||'—')}</div></div>
+        <div class="stat"><div class="stat-label">Grade</div><div class="stat-value">${escapeHTML(profile.grade||'—')}</div></div>
+      </div>
+      <div class="lesson-box"><h3>Current Student Data</h3><div class="profile-edit-grid" style="text-align:left">
+        ${profileField('Name / الاسم',profile.fullName)}${profileField('School / المدرسة',profile.schoolName)}${profileField('Emirate / الإمارة',profile.emirate)}${profileField('Grade / الصف',profile.grade)}${profileField('Track / المسار',profile.track)}${profileField('Section / الشعبة',profile.section||'—')}
+      </div></div>
+      <div class="lesson-box"><h3>Student Activity & Results</h3><p style="margin:8px 0 16px">Each row records the student activity and the time it happened.</p>
+       <div class="teacher-table-wrap"><table class="teacher-table"><thead><tr><th>Name</th><th>School</th><th>Emirate</th><th>Grade</th><th>Track</th><th>Section</th><th>Action</th><th>Details / Result</th><th>Time</th></tr></thead><tbody>${rows||'<tr><td colspan="9">No activity yet.</td></tr>'}</tbody></table></div>
+      </div>
+      <div class="lesson-box"><h3>Important</h3><p>This GitHub Pages demo stores the records in this browser only. A real teacher dashboard shared across students/devices requires an online database.</p><button class="secondary" onclick="localStorage.removeItem('aa_teacher');showPage('home')">Exit Teacher Mode</button></div>`;
 }
 
 
@@ -3338,8 +3218,9 @@ function renderVisitorCounter(){
 }
 function startDemoCounter(){
  if(window.__demoCounterStarted)return; window.__demoCounterStarted=true;
- let n=Number(localStorage.getItem("aa_demo_counter")||0); if(!n)n=1; localStorage.setItem("aa_demo_counter",n); renderVisitorCounter();
- setInterval(()=>{n++;localStorage.setItem("aa_demo_counter",n);renderVisitorCounter()},1000);
+ let n=Number(localStorage.getItem("aa_demo_counter")||0); if(!n)n=1;
+ localStorage.setItem("aa_demo_counter",String(n)); renderVisitorCounter();
+ setInterval(()=>{n++;localStorage.setItem("aa_demo_counter",String(n));renderVisitorCounter()},1000);
 }
 
 function saveStudentProfile(){
